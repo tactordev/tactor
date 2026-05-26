@@ -10,7 +10,7 @@ import {
 
 function Section({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`flex flex-col w-full h-full section px-8 py-6 rounded-md shadow-lg ${className || ''} overflow-y-auto`}>
+    <div className={`flex flex-col w-full h-full section px-8 py-4 rounded-md shadow-lg ${className || ''} overflow-y-auto`}>
       {children}
     </div>
   )
@@ -139,7 +139,7 @@ export default function Home() {
 
       </Section>
       <Section className="col-span-2 row-span-4 pb-0">
-        <h1 className="text-xl font-bold text-gray-800">Experience</h1>
+        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 -mb-2 backdrop-blur-sm shadow-sm">Experience</h1>
         <ExperienceTree />
       </Section>
       <Section className="col-span-2 row-span-2">
