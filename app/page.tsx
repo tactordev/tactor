@@ -25,6 +25,16 @@ const experienceTree: tree = {
   }
 }
 
+const educationTree: tree = {
+  "King's College School": {
+    title: "GCSEs & A-Levels",
+    description: <p><span className="font-bold">A-Levels:</span> FM, Maths, CS, and Physics. <br /> <span className="font-bold">GCSE Results:</span> 99999999987</p>,
+    location: "Wimbledon, London, United Kingdom",
+    duration: "September 2020 - Present",
+    technologies: ["Python"]
+  }
+}
+
 type ProjectR = {
   title: string;
   description: string;
@@ -110,7 +120,7 @@ function Section({ children, className }: { children: React.ReactNode; className
 
 type tree = Record<string, {
   title: string;
-  description: string;
+  description: string | React.ReactNode;
   location: string;
   duration: string;
   technologies: string[];
@@ -120,10 +130,10 @@ function Tree(
   { tree }: { tree: tree }
 ) {
   return (
-    <div className="flex flex-col justify-center items-start w-full py-4 px-2 mb-4 overflow-y-auto scrb">
+    <div className="flex flex-col justify-center items-start w-full py-4 px-2 mb-4">
       {
         Object.entries(tree).map(([key, value]) => (
-          <div key={key} className="flex flex-row items-start last:overflow-y-hidden last:max-h-62">
+          <div key={key} className="flex flex-row items-start">
             <div className="flex flex-row items-center h-full justify-center first:mt-2">
                 <svg height="50" width="25" xmlns="http://www.w3.org/2000/svg" className="flex h-full">
                   <circle cx="11.4" cy="8" r="6" stroke="gray" strokeWidth="2" fill="none" />
@@ -134,7 +144,13 @@ function Tree(
               <h1 className="text-lg font-semibold text-gray-900">{value.title}</h1>
               <h2 className="text-sm text-gray-500 flex items-center justify-center"><Clock className="w-4 h-4 inline mr-1" /> {value.duration}</h2>
               <h2 className="text-sm text-gray-500 flex items-center justify-center"><MapPin className="w-4 h-4 inline mr-1" /> {value.location}</h2>
-              <p className="text-sm mt-1">{value.description}</p>
+              {
+                typeof value.description === "string" ? (
+                  <p className="text-sm mt-1">{value.description}</p>
+                ) : (
+                  value.description
+                )
+              }
               <div className="flex flex-row gap-4 mt-2">
                 {
                   value.technologies.map((tech) => (
@@ -210,9 +226,9 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section className="col-span-4 row-span-4">
-        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 -mb-2 backdrop-blur-sm shadow-sm">Projects</h1>
-        <div className="flex flex-row items-start justify-start w-full h-full gap-4 mt-4 overflow-y-auto pb-4">
+      <Section className="col-span-4 row-span-4 pb-0 overflow-y-auto scrb">
+        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Projects</h1>
+        <div className="flex flex-row items-start justify-start w-full h-full gap-4 mt-4 pb-4">
           {
             Object.entries(projects).map(([key, value]) => (
               <Project key={key} project={value} />
@@ -220,15 +236,16 @@ export default function Home() {
           }
         </div>
       </Section>
-      <Section className="col-span-2 row-span-4 pb-0">
-        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 -mb-2 backdrop-blur-sm shadow-sm">Experience</h1>
+      <Section className="col-span-2 row-span-4 pb-0 overflow-y-auto scrb">
+        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Experience</h1>
         <Tree tree={experienceTree} />
       </Section>
-      <Section className="col-span-2 row-span-2">
-        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 -mb-2 backdrop-blur-sm shadow-sm">Education</h1>
+      <Section className="col-span-2 row-span-2 pb-0 overflow-y-auto scrb">
+        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Education</h1>
+        <Tree tree={educationTree} />
       </Section>
-      <Section className="col-span-2 row-span-2">
-        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 -mb-2 backdrop-blur-sm shadow-sm">Testimonials</h1>
+      <Section className="col-span-2 row-span-2 pb-0 overflow-y-auto scrb">
+        <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Testimonials</h1>
       </Section>
       <p></p>
     </main>
