@@ -18,3 +18,26 @@ body {
 .section {
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
+
+.scrb {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.25) rgba(0,0,0,0.05);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.scrb::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrb::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.03);
+  border-radius: 9999px;
+}
+.scrb::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.25);
+  border-radius: 9999px;
+  border: 2px solid rgba(0,0,0,0.06);
+}
+.scrb::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0,0,0,0.35);
+}
