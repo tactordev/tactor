@@ -246,6 +246,7 @@ export default function Home() {
       </Section>
       <Section className="col-span-2 row-span-2 pb-0 overflow-y-auto scrb">
         <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Testimonials</h1>
+        <p className="mt-4 text-sm text-gray-600">None yet :(</p>
       </Section>
       <p></p>
     </main>
