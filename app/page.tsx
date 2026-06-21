@@ -28,8 +28,8 @@ const experienceTree: tree = {
 const educationTree: tree = {
   "King's College School": {
     title: "GCSEs & A-Levels",
-    description: <p><span className="font-bold">A-Levels:</span> FM, Maths, CS, and Physics. <br /> <span className="font-bold">GCSE Results:</span> 99999999987</p>,
-    location: "Wimbledon, London, United Kingdom",
+    description: <p><span className="font-bold">A-Level Predicteds:</span> A*A*A*A* in FM, Maths, CS, Physics <br /> <span className="font-bold">GCSE Results:</span> 99999999987</p>,
+    location: "London, United Kingdom",
     duration: "September 2020 - Present",
     technologies: ["Python"]
   }
