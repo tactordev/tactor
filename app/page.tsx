@@ -10,9 +10,16 @@ import {
 
 
 const experienceTree: tree = {
+  "QuasiScience": {
+	title: "Work Placement",
+	duration: "July 2026",
+	location: "London, United Kingdom",
+	description: "QuasiScience is a tech consulting company. I helped build an in-house tool that summarises a git repository's commit history into a presentable project status report for clients.",
+	technologies: [],
+  },
   "WHISP": {
     title: "Lead Frontend Web Developer",
-    duration: "August 2024 - Present",
+    duration: "August 2024 - August 2026",
     location: "Remote, United Kingdom",
     description: "Leading web developer for the discord bot WHISP. It provides integration into games such as FiveM.",
     technologies: ["Typescript", "Next.js", "Tailwind CSS"]
