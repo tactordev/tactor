@@ -1,3 +1,4 @@
+"use client";
 import {
   MapPin,
   Clock
@@ -52,7 +53,41 @@ const projects: Record<string, ProjectR> = {
     thumbnail: "/cards-bg.jpg",
     github: "https://github.com/tactordev/cards",
     demo: "https://cards.tactor.dev/"
-  }
+  },
+  "NEA: Dispatch Simulation": {
+    title: "NEA",
+    description: "This is my NEA for my A Level Computer Science qualification. I have chosen to create a simulation that can be used to help train emergency dispatching operators by emulating a shift.",
+    technologies: ["Next.js", "Typescript"],
+    thumbnail: "/nea-showcase.jpg",
+    github: "https://github.com/tactordev/nea",
+    demo: "https://nea-opal.vercel.app/"
+  },
+  "NightWatch": {
+    title: "NightWatch",
+    description: "An open source discord bot built to provide a free alternative to discord gaming servers within the Emergency Response: Liberty County community.",
+    technologies: ["NodeJS"],
+    thumbnail: "/nightwatch-showcase.jpg",
+    github: "https://github.com/tactordev/nightwatch",
+    demo: "https://github.com/tactordev/nightwatch"
+  },
+  "ERLC Utils": {
+    title: "ERLC Utils",
+    description: "A website that provides utilities for the gaming community around Emergency Response: Liberty County. At present, it currently provides a utility to help build vehicle regulations. In the future, I plan to implement a custom interactive map software similar to that of Google Maps and Google StreetView.",
+    technologies: ["Next.js", "Typescript", "Tailwind CSS"],
+    thumbnail: "/erlcutils-showcase.jpg",
+    github: "https://github.com/tactordev/erlc-utils",
+    demo: "https://erlc.tactor.dev/"
+  },
+
+  "Projectile Motion": {
+    title: "Projectile Motion",
+    description: "A project written for https://shrink.hackclub.com/. This is a website that has simulates a particle projected from a cannon at differing angles and speeds with the aim to hit a target. The website has also been \"minified\" (shrunk down to a single line of code under 3KiB).",
+    technologies: [],
+    thumbnail: "/shrinkprojectile-showcase.jpg",
+    github: "https://github.com/tactordev/shrink-projectile",
+    demo: "data:text/html,<style>body{margin:0;height:100vh;background:linear-gradient(%230bf 80vh,green 0)}div{position:fixed;left:.5vw;top:1vh;width:10vw;height:12.5vh;padding:.5vw;background:bisque}div+div{top:17.5vh;width:15vw;height:15vh}h1{font-size:1vw}canvas{position:fixed}</style><div><h1>Projectile Motion</h1><p> Objective: hit the target!</p><button id=\"f\">&%23x1F4A3; Fire!</button></div><div><h1>Customisers</h1><p style=\"margin-top:-.5vw\">Customise how the ball is fired.</p><input type=\"range\" id=\"s\" oninput='a.value=value+\" m/s\"'><output id=\"a\">50 m/s</output><input type=\"range\" id=\"g\" value=\"9\" oninput='b.value=value+\"m/s^2\"'><output id=\"b\">9m/s^2</output></div><div style=\"margin-top:17.5vh;height:5vh;\"><h1 id=\"m\">Score: 0</h1></div><canvas id=\"p\" style=\"pointer-events:none\"></canvas><canvas id=\"c\" height=\"100\" style=\"left:5vw;top:65vh;height:20vh\"></canvas><canvas id=\"t\" width=\"200\" height=\"150\" style=\"right:5vw;top:66.5vh;height:30vh\"></canvas><script>let e=0;const n=p.getContext(\"2d\"),o=c.getContext(\"2d\"),i=t.getContext(\"2d\");let r,l=.44,h=-9,u=-9,d=0,v=0,C=0,w=0;const M=(t,e)=>{t.fillStyle=e,t.fill(),t.stroke()};let x;p.height=innerHeight;const B=()=>{c.width=100,o.save(),o.translate(32,90),o.rotate(l),o.beginPath(),o.moveTo(-15,-60),o.quadraticCurveTo(-25,0,-15,0),o.lineTo(15,0),o.quadraticCurveTo(25,-2,15,-60),M(o,\"white\"),o.beginPath(),o.ellipse(0,-60,15,3,0,0,7),M(o,\"silver\"),o.restore(),o.beginPath(),o.arc(32,100,30,3.14,0),M(o,\"red\")},P=t=>{const e=c.getBoundingClientRect(),n=100/e.width;l=Math.max(0,Math.min(1.4,Math.atan2((t.clientY-e.top)*n-90,(t.clientX-e.left)*n-32)+1.57)),B()};c.onmousedown=t=>{r=1,P(t)},onmousemove=t=>{r&&P(t)},onmouseup=t=>{r=0},f.onclick=()=>{x=x||new AudioContext,(()=>{const t=x.sampleRate,b=x.createBuffer(1,t,t),e=b.getChannelData(0);for(let n=0;n<t;n++)e[n]=(2*Math.random()-1)*(1-n/t)**3;const n=x.createBufferSource();n.buffer=b,n.connect(x.destination),n.start()})();const t=c.getBoundingClientRect(),e=t.height/100,n=Math.sin(l),o=Math.cos(l);h=t.left+e*(32+60*n),u=t.top+e*(90-60*o),d=n*s.value,v=-o*s.value,C=+g.value};const T=o=>{const i=(o-w)/100;if(w=o,p.width=innerWidth,h+=d*i,v+=C*i,u+=v*i,u>.8*innerHeight){u=.8*innerHeight,d=v=C=0;const n=t.getBoundingClientRect(),o=n.height/150;Math.abs(h-n.left-125*o)<75*o&&([523,659,784].map((t,e)=>{const n=x.createOscillator(),o=x.currentTime+.1*e;n.frequency.value=t,n.connect(x.destination),n.start(o),n.stop(o+.1)}),m.textContent=\"Score: \"+ ++e),t.style.right=30*Math.random()+5+\"vw\"}n.beginPath(),n.arc(h,u,8,0,7),M(n),requestAnimationFrame(T)};for(let t=3;t;t--)i.beginPath(),i.ellipse(125,80,25*t,4*t,0,0,7),M(i,t%252?\"red\":\"white\");B(),T(0);</script>"
+  },
+
 }
 
 // brandfetch.com
@@ -174,7 +209,7 @@ function Project(
   }
 ) {
   return  (
-    <div className="flex flex-col w-fit h-fit rounded-md shadow-sm bg-gray-100/50 border-1 border-gray-300">
+    <div className="flex flex-col w-fit h-fit rounded-md shadow-sm bg-gray-100/50 border-1 border-gray-300 hover:cursor-pointer hover:scale-101 transition-all duration-200" onClick={() => { project.demo ? window.location.href = project.demo : null; }}>
       <img src={project.thumbnail} alt={`${project.title} thumbnail`} className="w-full h-32 object-cover rounded-t-md -p-1 border-1 border-gray-400" />
       <div className="flex flex-col px-4 py-2">
         <h1 className="text-lg font-semibold text-gray-700">{project.title}</h1>
