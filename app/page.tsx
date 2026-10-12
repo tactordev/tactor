@@ -95,6 +95,15 @@ const projects: Record<string, ProjectR> = {
     demo: "data:text/html,<style>body{margin:0;height:100vh;background:linear-gradient(%230bf 80vh,green 0)}div{position:fixed;left:.5vw;top:1vh;width:10vw;height:12.5vh;padding:.5vw;background:bisque}div+div{top:17.5vh;width:15vw;height:15vh}h1{font-size:1vw}canvas{position:fixed}</style><div><h1>Projectile Motion</h1><p> Objective: hit the target!</p><button id=\"f\">&%23x1F4A3; Fire!</button></div><div><h1>Customisers</h1><p style=\"margin-top:-.5vw\">Customise how the ball is fired.</p><input type=\"range\" id=\"s\" oninput='a.value=value+\" m/s\"'><output id=\"a\">50 m/s</output><input type=\"range\" id=\"g\" value=\"9\" oninput='b.value=value+\"m/s^2\"'><output id=\"b\">9m/s^2</output></div><div style=\"margin-top:17.5vh;height:5vh;\"><h1 id=\"m\">Score: 0</h1></div><canvas id=\"p\" style=\"pointer-events:none\"></canvas><canvas id=\"c\" height=\"100\" style=\"left:5vw;top:65vh;height:20vh\"></canvas><canvas id=\"t\" width=\"200\" height=\"150\" style=\"right:5vw;top:66.5vh;height:30vh\"></canvas><script>let e=0;const n=p.getContext(\"2d\"),o=c.getContext(\"2d\"),i=t.getContext(\"2d\");let r,l=.44,h=-9,u=-9,d=0,v=0,C=0,w=0;const M=(t,e)=>{t.fillStyle=e,t.fill(),t.stroke()};let x;p.height=innerHeight;const B=()=>{c.width=100,o.save(),o.translate(32,90),o.rotate(l),o.beginPath(),o.moveTo(-15,-60),o.quadraticCurveTo(-25,0,-15,0),o.lineTo(15,0),o.quadraticCurveTo(25,-2,15,-60),M(o,\"white\"),o.beginPath(),o.ellipse(0,-60,15,3,0,0,7),M(o,\"silver\"),o.restore(),o.beginPath(),o.arc(32,100,30,3.14,0),M(o,\"red\")},P=t=>{const e=c.getBoundingClientRect(),n=100/e.width;l=Math.max(0,Math.min(1.4,Math.atan2((t.clientY-e.top)*n-90,(t.clientX-e.left)*n-32)+1.57)),B()};c.onmousedown=t=>{r=1,P(t)},onmousemove=t=>{r&&P(t)},onmouseup=t=>{r=0},f.onclick=()=>{x=x||new AudioContext,(()=>{const t=x.sampleRate,b=x.createBuffer(1,t,t),e=b.getChannelData(0);for(let n=0;n<t;n++)e[n]=(2*Math.random()-1)*(1-n/t)**3;const n=x.createBufferSource();n.buffer=b,n.connect(x.destination),n.start()})();const t=c.getBoundingClientRect(),e=t.height/100,n=Math.sin(l),o=Math.cos(l);h=t.left+e*(32+60*n),u=t.top+e*(90-60*o),d=n*s.value,v=-o*s.value,C=+g.value};const T=o=>{const i=(o-w)/100;if(w=o,p.width=innerWidth,h+=d*i,v+=C*i,u+=v*i,u>.8*innerHeight){u=.8*innerHeight,d=v=C=0;const n=t.getBoundingClientRect(),o=n.height/150;Math.abs(h-n.left-125*o)<75*o&&([523,659,784].map((t,e)=>{const n=x.createOscillator(),o=x.currentTime+.1*e;n.frequency.value=t,n.connect(x.destination),n.start(o),n.stop(o+.1)}),m.textContent=\"Score: \"+ ++e),t.style.right=30*Math.random()+5+\"vw\"}n.beginPath(),n.arc(h,u,8,0,7),M(n),requestAnimationFrame(T)};for(let t=3;t;t--)i.beginPath(),i.ellipse(125,80,25*t,4*t,0,0,7),M(i,t%252?\"red\":\"white\");B(),T(0);</script>"
   },
 
+  "Commit Reports": {
+    title: "Commit Reports",
+    description: "A project where I built a tool that automatically converts a git repository's commit history into a project report (using LaTeX and Jinja).",
+    technologies: ["Python"],
+    thumbnail: "/qs-showcase.jpg",
+    github: "https://github.com/tactordev/commit-to-latex-report",
+    demo: "https://github.com/tactordev/commit-to-latex-report/releases"
+  }
+
 }
 
 // brandfetch.com
@@ -188,7 +197,7 @@ function Tree(
               <h2 className="text-sm text-gray-500 flex items-center justify-center"><MapPin className="w-4 h-4 inline mr-1" /> {value.location}</h2>
               {
                 typeof value.description === "string" ? (
-                  <p className="text-sm mt-1">{value.description}</p>
+                  <p className="text-sm mt-1 text-gray-800">{value.description}</p>
                 ) : (
                   value.description
                 )
@@ -268,9 +277,9 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section className="col-span-4 row-span-4 pb-0 overflow-y-auto scrb">
+      <Section className="col-span-4 row-span-4 overflow-y-auto scrb">
         <h1 className="text-xl font-bold text-gray-800 sticky -top-2 rounded-md px-4 py-2 backdrop-blur-sm shadow-sm">Projects</h1>
-        <div className="flex flex-row items-start justify-start w-full h-full gap-4 mt-4 pb-4">
+        <div className="flex flex-row items-start justify-start flex-wrap w-full gap-4 mt-4 pb-2">
           {
             Object.entries(projects).map(([key, value]) => (
               <Project key={key} project={value} />
